@@ -3,7 +3,9 @@
 
 ## Departamento de ciencias computacionales
 Computación tolerante a fallas - Sección D06
+
 Profesor: *López Franco Michel Emanuel*
+
 Alumno: *Lomelí Flores Jesús Isaac*
 
 ## Istio
