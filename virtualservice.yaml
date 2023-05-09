@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: api-service-ingress
+spec:
+  hosts: 
+  - '*'
+  gateways:
+  - api-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /v1/
+    rewrite:
+        uri: /
+    route:
+    - destination:
+        host: api-kubernetes-jilf-service
+        port:
+          number: 8000
+  - match:
+    - uri:
+        prefix: /v2/
+    rewrite:
+        uri: /
+    route:
+    - destination:
+        host: api-istio-jilf-service
+        port: 
+          number: 8000

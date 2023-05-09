@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-kubernetes-jilf-deployment
+  labels:
+    app: apikubernetes
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apikubernetes
+  template:
+    metadata:
+      labels:
+        app: apikubernetes
+    spec:
+      containers:
+      - name: apikubernetes
+        image: caasi81/apikubernetes:v1
+        ports:
+        - containerPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-kubernetes-jilf-service
+  labels:
+    app: api-kubernetes-jilf-service
+spec:
+  selector:
+    app: apikubernetes
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  sessionAffinity: None
